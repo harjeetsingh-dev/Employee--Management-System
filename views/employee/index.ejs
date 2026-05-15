@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
+<%- include('../components/head.ejs', { title: "All Employees" }) %>
+<%- include('../components/navbar.ejs', { showAddButton: true }) %>
 <body>
     <h1>All Employees</h1>
-
     <a href="/employee/new">
         <button>Add New Employee</button>
     </a>
@@ -22,6 +14,8 @@
             <th>Department</th>
             <th>Position</th>
             <th>Salary</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
 
         <% for (const employee of employees) { %>
@@ -40,6 +34,16 @@
                 </td>
                 <td>
                     <%= employee.salary %>
+                </td>
+                <td>
+                    <a href="/employee/<%= employee._id %>">
+                        <button>Edit</button>
+                    </a>
+                </td>
+                <td>
+                    <form action="/employee/<%=employee._id%>/delete?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
             <% } %>

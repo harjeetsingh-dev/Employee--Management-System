@@ -2,7 +2,10 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
+const methodOverride = require('method-override');
 const ejs = require('ejs');
+
+app.use(methodOverride("_method"));
 
 
 const dotenv = require('dotenv');

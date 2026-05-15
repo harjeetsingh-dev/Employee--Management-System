@@ -32,7 +32,7 @@ module.exports.createEmployee = async (req, res) => {
 module.exports.getAllEmployees = async (req, res) => {
   try {
     const employees = await Employee.find();
-    res.render("./employee/index", { employees });
+    res.render("../views/employee/index.ejs", { employees });
   } catch (err) {
     console.error(err);
     res.json({ message: 'Server Error' });
@@ -47,7 +47,7 @@ module.exports.getEmployee = async (req, res) => {
     if (!employee) {
       return res.json({ message: 'Employee not found' });
     }
-    res.json({ employee });
+    res.render("../views/employee/edit.ejs", { employee });
 
   } catch (err) {
     console.error(err);
@@ -55,6 +55,21 @@ module.exports.getEmployee = async (req, res) => {
   }
 
 };
+// Edit Employee form with pre-filled data.
+module.exports.editEmployee = async (req, res) => {
+  let id = req.params.id; 
+  try {
+    const employee = await Employee.findById(id);
+    if (!employee) {
+      return res.json({ message: 'Employee not found' });
+    } 
+    res.render("../views/employee/edit.ejs", { employee });
+  } catch (err) {
+    console.error(err);
+    res.json({ message: 'Server Error' });
+  }
+};
+
 
 // Update Employee
 module.exports.updateEmployee = async (req, res) => {
@@ -68,24 +83,14 @@ module.exports.updateEmployee = async (req, res) => {
       department: department,
       salary: salary
     },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true}
     );
-    res.json({ updatedEmployee });
+    res.redirect("/Allemployee");
   } catch (err) {
     console.error(err);
     res.json({ message: 'Server Error' });
   }
 };
-
-// Delete Employee 
-
-module.exports.newEmployee = (req, res) => {
-  res.render("../views/employee/delete.ejs");
-};
-
-
-
-
 
 // Delete Employee
 module.exports.deleteEmployee = async (req, res) => {
@@ -95,7 +100,7 @@ module.exports.deleteEmployee = async (req, res) => {
     if (!deletedEmployee) {
       return res.json({ message: 'Employee not found' });
     }
-    res.json({ message: 'Employee deleted successfully' });
+    res.redirect("/Allemployee");
   } catch (err) {
     console.error(err);
     res.json({ message: 'Server Error' });

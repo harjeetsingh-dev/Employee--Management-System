@@ -12,21 +12,25 @@ router.get('/employee/new', EmployeeController.newEmployee);
 // Create Employee   
 router.post('/employee', EmployeeController.createEmployee);
 
+
+
 // Get Employees
 router.get('/Allemployee', EmployeeController.getAllEmployees);
 
 // Get Employee by ID
 router.get('/employee/:id', EmployeeController.getEmployee);
 
-// Update Employee
 
-router.patch('/employee/:id', EmployeeController.updateEmployee);
+
+// Update Employee form with pre-filled data.
+router.get('/employee/:id', EmployeeController.editEmployee); 
+
+router.patch('/employee/:id/edit', EmployeeController.updateEmployee);
+
+
+
 // Delete Employee
-
-
-router.get("/employees/delete",EmployeeController.renderDeleteForm);
-
-router.delete('/employee/:id', EmployeeController.deleteEmployee);
+router.delete('/employee/:id/delete', EmployeeController.deleteEmployee);
 
 module.exports = router;
 
