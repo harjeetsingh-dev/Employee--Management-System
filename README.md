@@ -64,37 +64,38 @@ This application provides secure employee management with authentication, role-b
 - dotenv
 
 --------------------------------------------------
-
 ## 🏗️ Project Architecture
 
 This project follows the MVC (Model View Controller) architecture.
 
+```text
 Employee-Management-System/
+
 ├── controllers/
 │   └── Business logic
-│
+
 ├── models/
 │   └── Mongoose schemas
-│
+
 ├── routes/
 │   └── Application routes
-│
+
 ├── middleware/
 │   └── Authentication, authorization & validation
-│
+
 ├── views/
 │   └── EJS templates
-│
+
 ├── public/
 │   └── Static files
-│
-├── screenshots/
+
+├── Screenshots/
 │   └── Project screenshots
-│
+
 ├── index.js
 ├── package.json
 └── README.md
-
+```
 --------------------------------------------------
 
 ## 🔐 Authentication Flow
