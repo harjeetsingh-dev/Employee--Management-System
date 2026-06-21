@@ -169,8 +169,9 @@ npm start
 ```
 ----------------------------------------
 ## 📸 Screenshots
-
-
+[Login](Screenshots/login.png)
+[Dashboard](Screenshots/dashboard.png)
+[Profile](Screenshots/profile.png)
 
 ----------------------------------------
 ## Live Demo
