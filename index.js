@@ -1,34 +1,27 @@
+require('dotenv').config({ override: true, quiet: true });
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const mongoose = require("mongoose");
 const methodOverride = require('method-override');
 const ejs = require('ejs');
 
 app.use(methodOverride("_method"));
 
-
-const dotenv = require('dotenv');
-dotenv.config();
 // Models
 const Employee = require('./models/employee');
 const User = require('./models/user');
 
 // Routes
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/authRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
 
 //express session and connect-mongo
 const session = require('express-session');
-const MongoStore = require("connect-mongo");
-
-app.listen(port, () => {
-  console.log(`server Running on port ${port}`);
-});
-
+const { MongoStore } = require("connect-mongo");
 
 //Database connection
-mongoose.connect("mongodb://127.0.0.1:27017/employeeDB")
+mongoose.connect(process.env.MONGO_URL)
   .then(() => {
     console.log("DB Connected");
   })
@@ -36,6 +29,9 @@ mongoose.connect("mongodb://127.0.0.1:27017/employeeDB")
     console.log(err);
   });
 
+app.listen(port, () => {
+  console.log(`server Running on port ${port}`);
+});
 
 // Body parser
 app.use(express.json());
@@ -46,31 +42,26 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 
-// const store = MongoStore.create({
-//   mongoUrl: "mongodb://127.0.0.1:27017/employeeDB",
-//   crypto: {
-//     secret: process.env.SECRET || "mySecretKey"
-//   },
-//   touchAfter: 24 * 60 * 60 // 24 hours
-// });
-
-
 // Express-Session configuration
-app.use(session({
-  secret: process.env.SECRET || "mySecretKey",
+
+const sessionOptions = {
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URL
+  }),
+
   cookie: {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 // 24 hours
   }
-}));
-
+}
+app.use(session(sessionOptions));
 
 // Static files
-app.use(express.json());
 app.use(express.static('public'));
-
 
 // User Routes
 app.use("/", userRoutes);
@@ -79,7 +70,10 @@ app.use("/", userRoutes);
 app.use("/", employeeRoutes);
 
 // Home route
-app.get('/home', (req, res) => {
-  res.render('home');
+
+app.get('/home', async (req, res) => {
+  adminExist = await User.findOne({ role: "admin" })
+  res.render('home', { showSignup: !adminExist });
 });
+
 

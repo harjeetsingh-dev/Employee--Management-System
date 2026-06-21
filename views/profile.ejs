@@ -1,0 +1,49 @@
+<%- include("../views/components/head.ejs", { title: "Employee Profile" }) %>
+
+    <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div class="bg-white shadow-lg rounded-xl w-full max-w-lg p-8">
+            <!-- Heading -->
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Employee Profile</h1>
+
+            <!-- User Information -->
+            <div class="border-b pb-4 mb-4">
+                <h2 class="text-xl font-semibold text-blue-600 mb-3">User Information</h2>
+                <p class="mb-2"><span class="font-semibold">Name:</span>
+                    <%= user.username %>
+                </p>
+
+                <p class="mb-2"><span class="font-semibold">Email:</span>
+                    <%= user.email %>
+                </p>
+
+                <p class="mb-2"><span class="font-semibold">Role:</span>
+                    <%= user.role %>
+                </p>
+            </div>
+
+            <!-- Employee Information -->
+            <div>
+                <h2 class="text-xl font-semibold text-green-600 mb-3">Employee Details</h2>
+                <p class="mb-2"><span class="font-semibold">Department:</span>
+                    <%= user.employee.department %>
+                </p>
+                <p class="mb-2"><span class="font-semibold">Position:</span>
+                    <%= user.employee.position %>
+                </p>
+                <p class="mb-2"><span class="font-semibold">Salary:</span>₹<%= user.employee.salary %>
+                </p>
+                <p class="mb-2"><span class="font-semibold">Joining Date:</span>
+                    <%= user.createdAt.toDateString() %>
+                </p>
+            </div>
+
+            <!-- Logout Button -->
+
+            <div class="mt-6 text-center">
+                <form action="/logout" method="POST">
+                    <button type="submit"
+                        class="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600">Logout</button>
+                </form>
+            </div>
+        </div>
+    </body>

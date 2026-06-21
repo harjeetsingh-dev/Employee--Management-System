@@ -1,6 +1,5 @@
 <%- include('../components/head.ejs', { title: "All Employees" }) %>
     <%- include('../components/navbar.ejs') %>
-
         <body class="bg-gray-100 min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
@@ -82,7 +81,7 @@
                                                 <span class="text-gray-300">|</span>
 
                                                 <!-- Edit Button -->
-                                                <a href="/employee/<%=employee._id %>"
+                                                <a href="/employee/<%=employee._id %>/edit"
                                                     class="bg-yellow-500 text-white px-3 py-1.5 rounded-md hover:bg-yellow-600 transition text-sm">
                                                     Edit
                                                 </a>
@@ -102,11 +101,8 @@
 
                                     </tr>
                                     <% } %>
-
                             </tbody>
-
                         </table>
-
                     </div>
                 </div>
             </div>

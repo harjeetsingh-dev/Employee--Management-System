@@ -8,18 +8,17 @@
                 <h1 class="text-xl md:text-2xl font-bold text-gray-800">
                     Employee Management System
                 </h1>
-
                 <div class="flex gap-3">
-                    <a href="/login"
-                        class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+                    <a href="/login" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
                         Login
                     </a>
-                    
-                    <a href="/signup" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
-                        Signup
-                    </a>
+                    <% if (showSignup){ %>
+                        <a href="/signup"
+                            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+                            Signup
+                        </a>
+                    <% } %>
                 </div>
-
             </div>
         </nav>
 

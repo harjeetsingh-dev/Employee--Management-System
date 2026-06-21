@@ -1,31 +1,33 @@
-
 const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        minlength: 3,
+        maxlength: 30,
     },
     email: {
-        type: String,
-        required: true,
-        trim: true,
+        type:String,
+        required:true,
+        trim:true,
         lowercase: true,
         unique: true
     },
     password:
     {
-        type: String,
-        required: true
+        type:String,
+        required:true
     },
+
     role: {
-        type: String,
-        enum: ['admin', 'user'],
-        default: 'user'
+        type:String,
+        enum:["admin", "employee"],
+        default:"employee"
     },
-    employeeId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee"
+    employee:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Employee"
     },
     createdAt: {
         type: Date,
@@ -33,7 +35,4 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('User', userSchema);
-
-
-
+module.exports = mongoose.models.User || mongoose.model("User", userSchema);

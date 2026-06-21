@@ -1,60 +1,203 @@
-# Employee Management Project
+# 👨‍💼 Employee Management System
 
-A Node.js/Express application with MVC architecture for managing employees.
+A full-stack Employee Management System built using 
+**HTML5, CSS3, JavaScript, Tailwind CSS, Node.js, Express.js, MongoDB, Mongoose, and EJS** following the **MVC architecture pattern**.
 
-## Project Structure
+This application provides secure employee management with authentication, role-based authorization (RBAC),session management , server-side validation ,and complete employee CRUD functionality.
 
+--------------------------------------------------
+
+## 🚀 Features
+
+### 🔐 Authentication & Security
+- User registration and login system
+- Secure password hashing using bcrypt
+- Session-based authentication using Express Session
+- Persistent session storage with MongoDB using connect-mongo
+- HTTP-only cookies for improved session security
+
+### 👥 Role-Based Access Control (RBAC)
+- Admin and Employee role management
+- Protected routes using custom middleware
+- Admin access for employee management operations
+- Employee access to personal profile information
+
+### 👨‍💻 Employee Management
+- Create new employee records
+- View employee information
+- Update employee details
+- Delete employee records
+- Employee profile management
+
+### 🛡️ Validation & Error Handling
+- Server-side request validation using Joi
+- Mongoose schema validation
+- Duplicate email prevention
+- Centralized error page handling
+
+--------------------------------------------------
+
+## 🛠️ Tech Stack
+
+### Frontend
+- HTML5
+- CSS3
+- Tailwind CSS
+- JavaScript
+- EJS Template Engine
+
+### Backend
+- Node.js
+- Express.js
+- Express Router
+- RESTful Routing
+
+### Database
+- MongoDB
+- Mongoose ODM
+
+### Authentication & Security
+- bcrypt
+- express-session
+- connect-mongo
+- Joi Validation
+- dotenv
+
+--------------------------------------------------
+
+## 🏗️ Project Architecture
+
+This project follows the MVC (Model View Controller) architecture.
+
+Employee-Management-System/
+├── controllers/
+│   └── Business logic
+│
+├── models/
+│   └── Mongoose schemas
+│
+├── routes/
+│   └── Application routes
+│
+├── middleware/
+│   └── Authentication, authorization & validation
+│
+├── views/
+│   └── EJS templates
+│
+├── public/
+│   └── Static files
+│
+├── screenshots/
+│   └── Project screenshots
+│
+├── index.js
+├── package.json
+└── README.md
+
+--------------------------------------------------
+
+## 🔐 Authentication Flow
+User Login
+     ↓
+Validate Credentials
+     ↓
+bcrypt Password Verification
+     ↓
+Create Express Session
+     ↓
+Store Session in MongoDB
+     ↓
+Access Protected Routes
+
+
+## 🔑 Authorization Flow
+Incoming Request
+        ↓
+Check Authentication
+        ↓
+Check User Role
+        ↓
+Admin / Employee Permission
+        ↓
+Access Resource
+
+## 🗄️ Database Design
+
+### User Model
+User:
+- username
+- email
+- password
+- role
+- employee reference
+
+
+### Employee Model
+- username
+- email
+- department
+- position
+- salary
+
+### Relationship:
+User Collection
+
+       ↓ ObjectId Reference
+
+Employee Collection
+
+--------------------------------------------------
+
+## 🔑 Environment Variables
+```env
+MONGO_URL=your_mongodb_connection_string
+SESSION_SECRET=your_secret_key
+PORT=3000
 ```
-employee-management/
-├── models/              # Data models (Employee.js)
-├── views/               # View templates (currently empty)
-├── controllers/         # Request handlers (EmployeeController.js)
-├── routes/              # Route definitions (employeeRoutes.js)
-├── middleware/          # Custom middleware (errorHandler.js)
-├── config/              # Configuration files (database.js)
-├── public/              # Static files (CSS, JS, images)
-├── utils/               # Utility functions (helpers.js)
-├── tests/               # Test files
-├── index.js             # Main server file
-├── package.json         # Project dependencies
-├── .env.example         # Environment variables template
-└── README.md            # Project documentation
+----------------------------------------
+## Installation
+```bash
+npm install
 ```
+----------------------------------------
 
-## API Endpoints
+## Run Application
 
-- `GET /api/employees` - Get all employees
-- `GET /api/employees/:id` - Get employee by ID
-- `POST /api/employees` - Create new employee
-- `PUT /api/employees/:id` - Update employee
-- `DELETE /api/employees/:id` - Delete employee
+```bash
+npm start
+```
+----------------------------------------
+## 📸 Screenshots
 
-## Getting Started
 
-1. Install dependencies:
-   ```
-   npm install
-   ```
 
-2. Create `.env` file from `.env.example`:
-   ```
-   cp .env.example .env
-   ```
+----------------------------------------
+## Live Demo
 
-3. Start the server:
-   ```
-   npm start
-   ```
+🔗 
 
-The server will run on `http://localhost:3000`
+----------------------------------------
 
-## Architecture Overview
+## 📌 Key Concepts Implemented
 
-- **Models**: Define employee data structure
-- **Controllers**: Handle business logic and request processing
-- **Routes**: Define API endpoints and map to controllers
-- **Middleware**: Handle cross-cutting concerns (error handling, validation)
-- **Config**: Centralized configuration management
-- **Utils**: Reusable helper functions
-- **Views**: Frontend templates (ready for EJS, Pug, or Handlebars)
+- MVC Architecture
+- RESTful Routing
+- Middleware Architecture
+- Authentication
+- Authorization (RBAC)
+- Session Management
+- Password Encryption
+- MongoDB Relationships
+- Server-side Validation(Joi)
+- CRUD Operations
+- Environment Configuration
 
+--------------------------------------------------
+
+## 👨‍💻 Author
+
+**Harjeet Singh**
+
+- Full Stack Developer
+- MERN Stack Enthusiast
