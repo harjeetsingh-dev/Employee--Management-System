@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Controller Path
-const AuthController = require('../controllers/authController');
+const AuthController = require('../controllers/AuthController');
 // Middleware
 const { isLoggedIn, isAdmin ,validateUser,UserLoginValidation } = require("../middleware/middleware");
 

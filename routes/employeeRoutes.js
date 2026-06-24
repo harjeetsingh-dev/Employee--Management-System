@@ -7,7 +7,6 @@ const EmployeeController = require('../controllers/EmployeeController');
 const { isLoggedIn, isAdmin ,validateEmployee} = require('../middleware/middleware');
 
 
-
 // Render New Employee Form
 router.get('/employee/new', isLoggedIn, isAdmin, EmployeeController.newEmployee);
 
