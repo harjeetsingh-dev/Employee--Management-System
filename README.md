@@ -55,6 +55,7 @@ This application provides secure employee management with authentication, role-b
 ### Database
 - MongoDB
 - Mongoose ODM
+- MongoDB Atlas
 
 ### Authentication & Security
 - bcrypt
@@ -62,7 +63,10 @@ This application provides secure employee management with authentication, role-b
 - connect-mongo
 - Joi Validation
 - dotenv
-
+  
+## Deployment:
+- Render
+  
 --------------------------------------------------
 ## 🏗️ Project Architecture
 
@@ -175,26 +179,48 @@ npm start
 [Profile](Screenshots/profile.png)
 
 ----------------------------------------
-## Live Demo
+## 🚀 Deployment Architecture
 
-🔗 
+GitHub Repository
+        |
+        ↓
+Render Cloud Server
+        |
+        ↓
+Node.js + Express Application
+        |
+        ↓
+MongoDB Atlas Database
+
+----------------------------------------
+## 🚀 Deployment
+
+- Application deployed on Render
+- Database hosted on MongoDB Atlas
+- Environment variables configured securely
+- Production mode enabled
 
 ----------------------------------------
 
-## 📌 Key Concepts Implemented
+## Live Demo
 
+🔗 https://employee-management-system-m8uw.onrender.com/home
+
+
+----------------------------------------
+## ✨ Features
+
+- Secure User Authentication
+- Role-Based Access Control (Admin & Employee)
+- Password Hashing using bcrypt
+- Express Session Authentication
+- Sessions Management using MongoDB Store
+- Employee CRUD Management
+- Protected Routes using Middleware
+- Data Validation using Joi
 - MVC Architecture
-- RESTful Routing
-- Middleware Architecture
-- Authentication
-- Authorization (RBAC)
-- Session Management
-- Password Encryption
-- MongoDB Relationships
-- Server-side Validation(Joi)
-- CRUD Operations
-- Environment Configuration
-
+- MongoDB Atlas Cloud Database
+- Production Deployment on Render
 --------------------------------------------------
 
 ## 👨‍💻 Author
