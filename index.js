@@ -9,7 +9,7 @@ const ejs = require('ejs');
 app.use(methodOverride("_method"));
 
 // Models
-const Employee = require('./models/employee');
+const Employee = require('./models/Employee');
 const User = require('./models/user');
 
 // Routes
