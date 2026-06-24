@@ -179,6 +179,8 @@ npm start
 [Profile](Screenshots/profile.png)
 
 ----------------------------------------
+
+```text
 ## 🚀 Deployment Architecture
 
 GitHub Repository
@@ -192,6 +194,7 @@ Node.js + Express Application
         ↓
 MongoDB Atlas Database
 
+```
 ----------------------------------------
 ## 🚀 Deployment
 
