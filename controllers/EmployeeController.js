@@ -1,6 +1,6 @@
 // Employee Controller
-const Employee = require('../models/employee');
-const User = require("../models/User");
+const Employee = require('../models/Employee');
+const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
 // Render New Employee Form
@@ -14,7 +14,7 @@ module.exports.createEmployee = async (req, res) => {
     const { username, email, position, department, salary } = req.body;
 
     //Check Employee already Exist or not with Same email
-
+    
     const existingEmployee = await Employee.findOne({
       email: email.toLowerCase().trim()
     });

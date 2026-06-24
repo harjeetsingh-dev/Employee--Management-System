@@ -6,7 +6,6 @@ const AuthController = require('../controllers/AuthController');
 // Middleware
 const { isLoggedIn, isAdmin ,validateUser,UserLoginValidation } = require("../middleware/middleware");
 
-
 // Render Signup Form
 router.get('/signup',  AuthController.renderSignupForm);
 
